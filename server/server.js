@@ -8,7 +8,8 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect("mongodb+srv://ABclicks:sampath0987@abclicks.hooheqd.mongodb.net/abclicks")
-  .then(() => console.log("MongoDB Connected"));
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
 
 app.post("/api/book", async (req, res) => {
   const booking = new Booking(req.body);
