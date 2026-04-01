@@ -1,201 +1,200 @@
-import { useRef } from "react";
+import React from "react";
 
 export default function Home() {
-  const portfolioRef = useRef(null);
-
-  const scrollToPortfolio = () => {
-    portfolioRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
   const whatsappLink = "https://wa.me/91891985233";
 
   return (
-    <div style={{ background: "#000000", color: "#ffffff", fontFamily: "'Outfit', sans-serif", overflowX: "hidden", position: "relative" }}>
-      
-      {/* FUTURISTIC CSS INJECTION */}
+    <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400&family=Space+Grotesk:wght@700&display=swap');
         
-        * { box-sizing: border-box; }
-        
-        /* Background Glow Orbs */
-        .glow-orb-1 { position: absolute; top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(0,112,243,0.15) 0%, rgba(0,0,0,0) 70%); z-index: 0; pointer-events: none; }
-        .glow-orb-2 { position: absolute; bottom: 20%; right: -10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(121,40,202,0.15) 0%, rgba(0,0,0,0) 70%); z-index: 0; pointer-events: none; }
-
-        .futuristic-heading { 
-          font-family: 'Space Grotesk', sans-serif; 
-          background: linear-gradient(to right, #ffffff, #a8a8a8); 
-          -webkit-background-clip: text; 
-          -webkit-text-fill-color: transparent; 
-          animation: fadeUp 1s ease-out;
+        body, html {
+          margin: 0; padding: 0; background: #000; color: #fff;
+          font-family: 'Outfit', sans-serif; overflow: hidden;
         }
 
-        .gradient-text {
-          background: linear-gradient(90deg, #0070f3, #f81ce5);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font-weight: 700;
+        .scroll-container {
+          height: 100vh; width: 100vw; overflow-y: scroll;
+          scroll-snap-type: y mandatory; scroll-behavior: smooth;
         }
 
-        /* Glassmorphism Cards */
-        .glass-panel {
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 16px;
-          padding: 40px;
-          position: relative;
+        .section {
+          height: 100vh; width: 100vw; scroll-snap-align: start;
+          position: relative; display: flex; align-items: center;
+          justify-content: center; overflow: hidden;
+        }
+
+        .media-bg {
+          position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+          object-fit: cover; z-index: 1;
+          transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .section:hover .media-bg { transform: scale(1.03); }
+
+        .overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
           z-index: 2;
         }
 
-        /* Cyber/Tech Buttons */
-        .btn-primary { 
-          background: #ffffff; color: #000000; padding: 14px 32px; border-radius: 30px; 
-          font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; 
-          border: none; cursor: pointer; transition: all 0.3s ease;
-          box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        .content {
+          position: relative; z-index: 3; text-align: center;
+          padding: 20px; display: flex; flex-direction: column; align-items: center;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(255,255,255,0.4); background: #e0e0e0; }
+
+        .huge-title {
+          font-family: 'Space Grotesk', sans-serif;
+          font-size: clamp(3rem, 8vw, 8rem); font-weight: 700;
+          line-height: 1.1; text-transform: uppercase; margin: 0;
+          letter-spacing: -2px; text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          animation: fadeUp 1s ease-out;
+        }
+
+        .subtitle {
+          font-size: clamp(1rem, 2vw, 1.5rem); letter-spacing: 4px;
+          text-transform: uppercase; color: #e0e0e0; margin-top: 20px;
+          margin-bottom: 40px; font-weight: 300;
+          animation: fadeUp 1.2s ease-out backwards;
+        }
+
+        .btn-primary {
+          background: #fff; color: #000; padding: 18px 45px;
+          font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem;
+          font-weight: 700; text-transform: uppercase; border: none;
+          border-radius: 50px; cursor: pointer; transition: all 0.3s ease;
+          text-decoration: none; display: inline-block;
+        }
         
-        .btn-secondary { 
-          background: transparent; color: #ffffff; padding: 14px 32px; border-radius: 30px; 
-          font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; 
-          border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s ease;
+        .btn-primary:hover {
+          transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255,255,255,0.2);
         }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
 
-        /* Media Cards */
-        .media-card { 
-          border-radius: 12px; overflow: hidden; position: relative; cursor: pointer;
-          border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          background: #0a0a0a; z-index: 2;
+        .play-btn {
+          width: 100px; height: 100px; background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.5);
+          border-radius: 50%; display: flex; align-items: center;
+          justify-content: center; cursor: pointer; transition: all 0.4s ease;
+          margin-bottom: 30px; text-decoration: none;
         }
-        .media-card img { width: 100%; height: 350px; object-fit: cover; transition: transform 0.6s ease; opacity: 0.8; }
-        .media-card:hover { border-color: #0070f3; box-shadow: 0 10px 30px rgba(0, 112, 243, 0.2); transform: translateY(-10px); }
-        .media-card:hover img { transform: scale(1.05); opacity: 1; }
         
-        .media-overlay { 
-          position: absolute; inset: 0; background: linear-gradient(to top, #000 0%, transparent 70%); 
-          display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; 
+        .play-btn:hover { background: #fff; transform: scale(1.1); }
+        .play-btn:hover svg { fill: #000; }
+
+        .scroll-indicator {
+          position: absolute; bottom: 40px; z-index: 3; display: flex;
+          flex-direction: column; align-items: center; gap: 15px; opacity: 0.7;
+          animation: bounce 2s infinite;
         }
+        
+        .scroll-indicator span { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; }
+        .scroll-line { width: 2px; height: 40px; background: linear-gradient(to bottom, #fff, transparent); }
 
-        /* Floating Element */
-        .floating-badge {
-          display: inline-block; padding: 8px 16px; border-radius: 20px; 
-          background: rgba(0, 112, 243, 0.1); border: 1px solid rgba(0, 112, 243, 0.3);
-          color: #0070f3; font-size: 13px; font-weight: 600; letter-spacing: 1px; margin-bottom: 20px;
-        }
-
-        .scroll-indicator { animation: pulse 2s infinite; position: absolute; bottom: 40px; color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .scroll-indicator::after { content: ''; width: 1px; height: 30px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); }
-
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-7px); } }
       `}</style>
 
-      {/* AMBIENT GLOWS */}
-      <div className="glow-orb-1"></div>
-      <div className="glow-orb-2"></div>
+      <div className="scroll-container">
 
-      {/* HERO SECTION */}
-      <div style={{ height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", padding: "20px", position: "relative" }}>
-        
-        <div className="glass-panel" style={{ maxWidth: "800px", textAlign: "center", width: "100%" }}>
-          <span className="floating-badge">NEXT-GEN VISUALS</span>
+        {/* 1. HERO SECTION */}
+        <section className="section">
+          {/* IMPORTANT: For the hero, do NOT lazy load. We want this instant. */}
+          <video className="media-bg" autoPlay loop muted playsInline preload="auto">
+            {/* Download your main video and put it in your project folder */}
+            <source src="/videos/hero-cinematic.mp4" type="video/mp4" />
+          </video>
+          <div className="overlay"></div>
           
-          <h1 className="futuristic-heading" style={{ fontSize: "clamp(35px, 5vw, 60px)", margin: "0 0 20px 0", lineHeight: 1.1 }}>
-            Capture Moments.<br/>
-            <span className="gradient-text">Create Memories.</span>
-          </h1>
-
-          <p style={{ color: "#a1a1aa", fontSize: "18px", lineHeight: 1.6, marginBottom: "15px", fontWeight: 300 }}>
-            Professional Photography & Cinematic Videography for Weddings, Birthdays, Pre-Wedding Shoots & Special Occasions.
-          </p>
-
-          <p style={{ fontSize: "14px", color: "#666", letterSpacing: "1px", textTransform: "uppercase", marginBottom: "40px" }}>
-            Budget-friendly • Creative storytelling • Trusted by happy clients
-          </p>
-
-          <div style={{ display: "flex", gap: "20px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
-              <button className="btn-primary">Book Now</button>
-            </a>
-            <button className="btn-secondary" onClick={scrollToPortfolio}>View Portfolio</button>
+          <div className="content">
+            <h1 className="huge-title">Capture<br/>Moments</h1>
+            <p className="subtitle">Create Memories</p>
+            <a href={whatsappLink} target="_blank" rel="noreferrer" className="btn-primary">Book Now</a>
           </div>
 
-          <div style={{ display: "flex", justifyContent: "center", gap: "40px", marginTop: "40px", paddingTop: "30px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-            <div><h3 style={{ margin: 0, fontSize: "24px", fontFamily: "'Space Grotesk'" }}>100+</h3><p style={{ margin: 0, fontSize: "12px", color: "#888" }}>HAPPY CLIENTS</p></div>
-            <div><h3 style={{ margin: 0, fontSize: "24px", fontFamily: "'Space Grotesk'" }}>300+</h3><p style={{ margin: 0, fontSize: "12px", color: "#888" }}>SHOOTS DONE</p></div>
+          <div className="scroll-indicator">
+            <span>Scroll</span>
+            <div className="scroll-line"></div>
           </div>
-        </div>
+        </section>
 
-        <div className="scroll-indicator" onClick={scrollToPortfolio}>Scroll to explore</div>
-      </div>
-
-      {/* PORTFOLIO SECTION */}
-      <div ref={portfolioRef} style={{ padding: "100px 5%", maxWidth: "1400px", margin: "0 auto", position: "relative" }}>
-        <h2 className="futuristic-heading" style={{ fontSize: "40px", marginBottom: "10px" }}>Our Work.</h2>
-        <p style={{ color: "#888", marginBottom: "60px", fontSize: "16px" }}>High-resolution photography. Click to view on Instagram.</p>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px" }}>
-          {[
-            { img: "https://images.unsplash.com/photo-1519741497674-611481863552", link: "https://www.instagram.com/p/DVig8fok_Vy/?img_index=1&igsh=MW84eGt0ZzNtcDZuOA==" },
-            { img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf", link: "https://www.instagram.com/p/DVZ_zn8k1jp/?img_index=2&igsh=Z295YWZpNng2b283" },
-            { img: "https://images.unsplash.com/photo-1537633552985-df8429e8048b", link: "https://www.instagram.com/p/DVDajxLE8AT/?img_index=1&igsh=MXZ6bXRsZmdiN3JyNQ==" },
-            { img: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486", link: "https://www.instagram.com/p/DRgiVIIk8qV/?igsh=MW0wZ2FvZnViZnVpNQ==" }
-          ].map((item, index) => (
-            <a key={index} href={item.link} target="_blank" rel="noreferrer" className="media-card">
-              <img src={item.img} alt={`Portfolio ${index + 1}`} />
-              <div className="media-overlay">
-                <span style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(5px)", color: "#fff", padding: "8px 16px", borderRadius: "30px", fontSize: "12px", width: "fit-content", border: "1px solid rgba(255,255,255,0.2)" }}>
-                  Open Photo ↗
-                </span>
-              </div>
+        {/* 2. PRE-WEDDING STORY */}
+        <section className="section">
+          {/* Added loading="lazy" to instantly boost site speed */}
+          <img className="media-bg" src="/images/pre-wedding-preview.jpg" alt="Pre Wedding" loading="lazy" />
+          <div className="overlay"></div>
+          
+          <div className="content">
+            <a href="https://www.instagram.com/reel/DVOZ3HNk7WU/" target="_blank" rel="noreferrer" className="play-btn">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="#fff" style={{ transition: "fill 0.4s ease", marginLeft: "5px" }}>
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
             </a>
-          ))}
-        </div>
-      </div>
+            <h2 className="huge-title" style={{ fontSize: "clamp(2rem, 6vw, 6rem)" }}>Pre-Wedding</h2>
+            <p className="subtitle">Watch The Story</p>
+          </div>
+        </section>
 
-      {/* VIDEO SECTION */}
-      <div style={{ padding: "50px 5% 100px", maxWidth: "1400px", margin: "0 auto", position: "relative", zIndex: 2 }}>
-        <h2 className="futuristic-heading" style={{ fontSize: "40px", marginBottom: "10px" }}>Featured Reels.</h2>
-        <p style={{ color: "#888", marginBottom: "60px", fontSize: "16px" }}>Cinematic storytelling in motion.</p>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "30px" }}>
-          {[
-            { title: "Pre-Wedding", img: "https://images.unsplash.com/photo-1606800052052-a08af7148866", link: "https://www.instagram.com/reel/DVOZ3HNk7WU/?igsh=MWYxYTRrcWQ1anZqYg==" },
-            { title: "Save The Date", img: "https://images.unsplash.com/photo-1583939003579-730e3918a45a", link: "https://www.instagram.com/reel/DReov7mE5PW/?igsh=MWU2dnlndHZ4MHdueA==" },
-            { title: "Haldi Ceremony 1", img: "https://images.unsplash.com/photo-1621801306175-ebc7b41e8c0e", link: "https://www.instagram.com/reel/DR7Iwmuk1rw/?igsh=NnlybDk3amtkdnhy" },
-            { title: "Haldi Ceremony 2", img: "https://images.unsplash.com/photo-1596450514735-111a2fe02935", link: "https://www.instagram.com/reel/DSKgVIeCHeN/?igsh=dmU0emR1ZHNsbDdt" }
-          ].map((video, index) => (
-            <a key={index} href={video.link} target="_blank" rel="noreferrer" className="media-card" style={{ height: "450px" }}>
-              <img src={video.img} alt={video.title} style={{ height: "100%" }} />
-              <div className="media-overlay">
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
-                  <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "rgba(255,255,255,0.2)", backdropFilter: "blur(5px)", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                  </div>
-                  <span className="gradient-text" style={{ fontSize: "14px" }}>Watch Reel</span>
-                </div>
-                <h3 style={{ margin: 0, color: "white", fontSize: "22px", fontFamily: "'Space Grotesk'" }}>{video.title}</h3>
-              </div>
+        {/* 3. VIBRANT HALDI */}
+        <section className="section">
+          <img className="media-bg" src="/images/haldi-preview.jpg" alt="Haldi Photo" loading="lazy" />
+          <div className="overlay"></div>
+          
+          <div className="content">
+            <h2 className="huge-title" style={{ fontSize: "clamp(2rem, 6vw, 6rem)" }}>Vibrant<br/>Haldi</h2>
+            <p className="subtitle">High Resolution</p>
+            <a href="https://www.instagram.com/p/DRgiVIIk8qV/" target="_blank" rel="noreferrer" className="btn-primary" style={{ background: "transparent", color: "#fff", border: "2px solid #fff" }}>
+              View Gallery
             </a>
-          ))}
-        </div>
-      </div>
+          </div>
+        </section>
 
-      {/* FOOTER / CONTACT */}
-      <div className="glass-panel" style={{ margin: "0 5% 50px", textAlign: "center", borderRadius: "24px" }}>
-        <h2 className="futuristic-heading" style={{ fontSize: "36px", marginBottom: "20px" }}>Ready to Start?</h2>
-        <p style={{ color: "#a1a1aa", marginBottom: "40px", maxWidth: "500px", margin: "0 auto 40px" }}>
-          Initiate a conversation. Let's discuss your vision and make it a reality.
-        </p>
-        <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
-          <button className="btn-primary">Initialize Chat ↗</button>
-        </a>
-      </div>
+        {/* 4. SAVE THE DATE */}
+        <section className="section">
+          <img className="media-bg" src="/images/save-the-date-preview.jpg" alt="Save the date" loading="lazy" />
+          <div className="overlay"></div>
+          
+          <div className="content">
+            <a href="https://www.instagram.com/reel/DReov7mE5PW/" target="_blank" rel="noreferrer" className="play-btn">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="#fff" style={{ transition: "fill 0.4s ease", marginLeft: "5px" }}>
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </a>
+            <h2 className="huge-title" style={{ fontSize: "clamp(2rem, 6vw, 6rem)" }}>Save The Date</h2>
+            <p className="subtitle">Cinematic Trailer</p>
+          </div>
+        </section>
 
-    </div>
+        {/* 5. THE WEDDING DAY */}
+        <section className="section">
+          <img className="media-bg" src="/images/wedding-day-preview.jpg" alt="Wedding Day" loading="lazy" />
+          <div className="overlay"></div>
+          
+          <div className="content">
+            <h2 className="huge-title" style={{ fontSize: "clamp(2rem, 6vw, 6rem)" }}>The Big Day</h2>
+            <p className="subtitle">Moments Frozen in Time</p>
+            <a href="https://www.instagram.com/p/DVig8fok_Vy/" target="_blank" rel="noreferrer" className="btn-primary" style={{ background: "transparent", color: "#fff", border: "2px solid #fff" }}>
+              View Gallery
+            </a>
+          </div>
+        </section>
+
+        {/* 6. CALL TO ACTION */}
+        <section className="section" style={{ background: "#0a0a0a" }}>
+          <div className="content">
+            <h2 className="huge-title" style={{ fontSize: "clamp(2rem, 5vw, 5rem)", marginBottom: "30px" }}>Let's Create<br/>Together.</h2>
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>
+              <a href={whatsappLink} target="_blank" rel="noreferrer" className="btn-primary">
+                Chat on WhatsApp
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="btn-primary" style={{ background: "transparent", color: "#fff", border: "2px solid #fff" }}>
+                Follow Instagram
+              </a>
+            </div>
+            <p style={{ marginTop: "50px", color: "#555", letterSpacing: "2px" }}>100+ HAPPY CLIENTS | 300+ SHOOTS</p>
+          </div>
+        </section>
+
+      </div>
+    </>
   );
 }
