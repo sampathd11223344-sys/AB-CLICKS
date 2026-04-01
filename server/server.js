@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("YOUR_MONGO_URI")
+mongoose.connect("mongodb+srv://ABclicks:sampath0987@abclicks.hooheqd.mongodb.net/abclicks")
   .then(() => console.log("MongoDB Connected"));
 
 app.post("/api/book", async (req, res) => {
