@@ -12,8 +12,7 @@ export default function Booking() {
   });
 
   const handleSubmit = async () => {
-    await axios.post("https://YOUR-BACKEND-URL/api/book", form);
-
+    await axios.post("https://abclicks.onrender.com/api/book", form);
     const msg = `Hello AB Clicks, I want to book a ${form.eventType} on ${form.date}. My name is ${form.name}`;
 
     window.open(`https://wa.me/91891985233?text=${encodeURIComponent(msg)}`);
