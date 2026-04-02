@@ -1,23 +1,21 @@
 import React from "react";
 
-export default function Journey() {
+export default function Journey(){
   return (
-    <div style={{
-      padding: "120px 20px",
-      background: "#000",
-      color: "#fff",
-      textAlign: "center"
-    }}>
-      <h1 style={{ marginBottom: "20px" }}>Our Journey</h1>
-
-      <p style={{
-        maxWidth: "600px",
-        margin: "auto",
-        lineHeight: "1.8"
-      }}>
-        We started with a passion for capturing emotions.
-        Today, we create cinematic wedding stories that last forever.
-      </p>
-    </div>
+    <section className="section">
+      <div className="container" style={{textAlign:"center"}}>
+        <h1>Our Journey</h1>
+        <p style={{
+          marginTop:"20px",
+          maxWidth:"700px",
+          marginInline:"auto",
+          lineHeight:"1.8",
+          color:"#bbb"
+        }}>
+          From small beginnings to capturing hundreds of love stories,
+          AB Clicks focuses on emotion, storytelling and timeless visuals.
+        </p>
+      </div>
+    </section>
   );
 }
