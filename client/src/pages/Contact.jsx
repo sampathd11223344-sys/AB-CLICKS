@@ -16,7 +16,7 @@ export default function Contact() {
 
     const text = `Hello AB Clicks, I want to book a ${form.event} shoot on ${form.date}. My name is ${form.name}`;
 
-    const url = `https://wa.me/91891985233?text=${encodeURIComponent(text)}`;
+    const url = `https://wa.me/918919852330?text=${encodeURIComponent(text)}`;
 
     window.open(url, "_blank"); // 🔥 IMPORTANT FIX
   };
