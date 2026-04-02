@@ -37,7 +37,32 @@ export default function App() {
           Book Now
         </a>
       </section>
+{/* PORTFOLIO */}
+<section id="portfolio" className="py-24 px-6 text-center">
+  <h2 className="text-4xl font-bold mb-12">Our Work</h2>
 
+  <div className="grid md:grid-cols-3 gap-6">
+
+    <img 
+      src="https://images.unsplash.com/photo-1529636798458-92182e662485"
+      className="rounded-xl hover:scale-105 transition duration-300"
+      alt="wedding"
+    />
+
+    <img 
+      src="https://images.unsplash.com/photo-1519741497674-611481863552"
+      className="rounded-xl hover:scale-105 transition duration-300"
+      alt="couple"
+    />
+
+    <img 
+      src="https://images.unsplash.com/photo-1504198458649-3128b932f49b"
+      className="rounded-xl hover:scale-105 transition duration-300"
+      alt="event"
+    />
+
+  </div>
+</section>
       {/* SERVICES */}
       <section id="services" className="py-24 px-6 text-center">
         <h2 className="text-4xl font-bold mb-12">Our Services</h2>
@@ -58,6 +83,7 @@ export default function App() {
 
         </div>
       </section>
+  
 
       {/* JOURNEY */}
       <section id="journey" className="py-24 px-6 text-center bg-gradient-to-b from-black to-gray-900">
