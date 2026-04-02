@@ -1,3 +1,4 @@
+import React from "react";
 export default function Journey() {
   return (
     <div style={{ padding: "100px 20px", background: "#000", color: "#fff" }}>
