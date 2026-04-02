@@ -9,6 +9,7 @@ export default function App() {
         <h1 className="font-bold text-xl">AB Clicks</h1>
         <div className="space-x-4 text-sm">
           <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
           <a href="#journey">Journey</a>
           <a href="#contact">Contact</a>
         </div>
