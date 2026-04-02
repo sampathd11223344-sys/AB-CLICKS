@@ -1,19 +1,22 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Booking from "./pages/Booking";
+import Journey from "./pages/Journey";
+import Work from "./pages/Work";
+import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
-import Whatsapp from "./components/Whatsapp";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/booking" element={<Booking />} />
+        <Route path="/journey" element={<Journey />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Whatsapp />
-    </BrowserRouter>
+    </Router>
   );
 }
 
