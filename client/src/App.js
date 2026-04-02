@@ -55,75 +55,80 @@ export default function App() {
 </section>
 
 
-{/* VIDEO PORTFOLIO */}
-<section id="portfolio" className="py-24 px-6 text-center">
-  <h2 className="text-4xl font-bold mb-12">Our Work</h2>
+{/* VIDEO PORTFOLIO - PREMIUM */}
+<section id="portfolio" className="py-28 px-6 text-center bg-gradient-to-b from-black to-gray-950">
+  <h2 className="text-5xl font-bold mb-4 tracking-wide">
+    Our Work
+  </h2>
+  <p className="text-gray-400 mb-16">
+    Capturing emotions through cinematic storytelling
+  </p>
 
-  <div className="grid md:grid-cols-3 gap-8">
+  <div className="grid md:grid-cols-3 gap-10">
 
     {[
-      {
-        title: "Haldi Ceremony",
-        id: "ysz5S6PUM-U",
-      },
-      {
-        title: "Wedding Highlights",
-        id: "jNQXAC9IVRw",
-      },
-      {
-        title: "Pre Wedding Shoot",
-        id: "ScMzIvxBSi4",
-      },
+      { title: "Haldi Ceremony", id: "ysz5S6PUM-U" },
+      { title: "Wedding Highlights", id: "jNQXAC9IVRw" },
+      { title: "Pre Wedding Shoot", id: "ScMzIvxBSi4" },
     ].map((video, i) => (
       <a
         key={i}
         href={`https://www.youtube.com/watch?v=${video.id}`}
         target="_blank"
         rel="noreferrer"
-        className="group"
+        className="group relative"
       >
-        <div className="relative overflow-hidden rounded-xl">
+
+        {/* CARD */}
+        <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-800 backdrop-blur-lg">
+
           <img
             src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
-            className="w-full h-64 object-cover group-hover:scale-110 transition duration-500"
             alt={video.title}
+            className="w-full h-72 object-cover transform group-hover:scale-110 transition duration-700"
           />
 
-          {/* overlay */}
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-            <div className="bg-white text-black px-4 py-2 rounded-full">
-              ▶ Play
+          {/* DARK OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+
+          {/* PLAY BUTTON */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-white/90 text-black px-5 py-2 rounded-full text-sm font-semibold opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition duration-300 shadow-xl">
+              ▶ Play Video
             </div>
+          </div>
+
+          {/* TITLE */}
+          <div className="absolute bottom-4 left-4 text-left">
+            <h3 className="text-xl font-semibold">{video.title}</h3>
           </div>
         </div>
 
-        <h3 className="mt-4 text-lg">{video.title}</h3>
       </a>
     ))}
 
   </div>
 </section>
-      {/* SERVICES */}
-      <section id="services" className="py-24 px-6 text-center">
-        <h2 className="text-4xl font-bold mb-12">Our Services</h2>
+      <section id="services" className="py-28 px-6 text-center">
+  <h2 className="text-5xl font-bold mb-16">Our Services</h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+  <div className="grid md:grid-cols-3 gap-10">
 
-          <div className="bg-gray-900 p-8 rounded-2xl hover:scale-105 transition">
-            Wedding Shoots
-          </div>
+    {[
+      "Wedding Shoots",
+      "Pre-Wedding",
+      "Haldi & Events",
+    ].map((service, i) => (
+      <div
+        key={i}
+        className="p-10 rounded-2xl border border-gray-800 bg-white/5 backdrop-blur-md hover:scale-105 hover:bg-white/10 transition duration-300 shadow-lg"
+      >
+        <h3 className="text-xl font-semibold">{service}</h3>
+      </div>
+    ))}
 
-          <div className="bg-gray-900 p-8 rounded-2xl hover:scale-105 transition">
-            Pre-Wedding
-          </div>
-
-          <div className="bg-gray-900 p-8 rounded-2xl hover:scale-105 transition">
-            Birthday & Events
-          </div>
-
-        </div>
-      </section>
-  
+  </div>
+</section>
 
       {/* JOURNEY */}
       <section id="journey" className="py-24 px-6 text-center bg-gradient-to-b from-black to-gray-900">
