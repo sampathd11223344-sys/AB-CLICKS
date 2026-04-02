@@ -38,29 +38,68 @@ export default function App() {
           Book Now
         </a>
       </section>
-{/* PORTFOLIO */}
+{/* CATEGORIES */}
+<section className="py-20 px-6 text-center">
+  <h2 className="text-4xl font-bold mb-10">Our Specialties</h2>
+
+  <div className="grid md:grid-cols-4 gap-6">
+    {["Wedding", "Haldi", "Pre-Wedding", "Reception"].map((item, i) => (
+      <div
+        key={i}
+        className="border border-gray-700 p-6 rounded-xl hover:bg-white hover:text-black transition"
+      >
+        {item}
+      </div>
+    ))}
+  </div>
+</section>
+
+
+{/* VIDEO PORTFOLIO */}
 <section id="portfolio" className="py-24 px-6 text-center">
   <h2 className="text-4xl font-bold mb-12">Our Work</h2>
 
-  <div className="grid md:grid-cols-3 gap-6">
+  <div className="grid md:grid-cols-3 gap-8">
 
-    <img 
-      src="https://images.unsplash.com/photo-1529636798458-92182e662485"
-      className="rounded-xl hover:scale-105 transition duration-300"
-      alt="wedding"
-    />
+    {[
+      {
+        title: "Haldi Ceremony",
+        id: "ysz5S6PUM-U",
+      },
+      {
+        title: "Wedding Highlights",
+        id: "jNQXAC9IVRw",
+      },
+      {
+        title: "Pre Wedding Shoot",
+        id: "ScMzIvxBSi4",
+      },
+    ].map((video, i) => (
+      <a
+        key={i}
+        href={`https://www.youtube.com/watch?v=${video.id}`}
+        target="_blank"
+        rel="noreferrer"
+        className="group"
+      >
+        <div className="relative overflow-hidden rounded-xl">
+          <img
+            src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+            className="w-full h-64 object-cover group-hover:scale-110 transition duration-500"
+            alt={video.title}
+          />
 
-    <img 
-      src="https://images.unsplash.com/photo-1519741497674-611481863552"
-      className="rounded-xl hover:scale-105 transition duration-300"
-      alt="couple"
-    />
+          {/* overlay */}
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+            <div className="bg-white text-black px-4 py-2 rounded-full">
+              ▶ Play
+            </div>
+          </div>
+        </div>
 
-    <img 
-      src="https://images.unsplash.com/photo-1504198458649-3128b932f49b"
-      className="rounded-xl hover:scale-105 transition duration-300"
-      alt="event"
-    />
+        <h3 className="mt-4 text-lg">{video.title}</h3>
+      </a>
+    ))}
 
   </div>
 </section>
