@@ -1,60 +1,164 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap');
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap');
 
-:root{
-  --bg:#0a0a0a;
-  --fg:#ffffff;
-  --muted:#a1a1a1;
-  --line:#222;
-  --max:1200px;
-}
-
-*{box-sizing:border-box;margin:0;padding:0}
-html,body,#root{height:100%}
-body{
-  background:var(--bg);
-  color:var(--fg);
-  font-family:'Inter',sans-serif;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1,h2,h3{
-  font-family:'Playfair Display',serif;
-  letter-spacing:-0.5px;
+/* GLOBAL */
+html {
+  scroll-behavior: smooth;
 }
 
-a{color:inherit;text-decoration:none}
-
-.container{
-  max-width:var(--max);
-  margin:auto;
-  padding:0 20px;
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
 }
 
-.section{
-  padding:120px 0;
+/* TYPOGRAPHY */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -1px;
 }
 
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all .9s ease;
-}
-.fade.show{
-  opacity:1;
-  transform:translateY(0);
+p {
+  color: #ccc;
+  line-height: 1.6;
 }
 
-.btn{
-  padding:14px 28px;
-  border-radius:999px;
-  border:1px solid #fff;
-  background:#fff;
-  color:#000;
-  font-weight:600;
-  cursor:pointer;
-  transition:.25s;
+/* LINKS */
+a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
 }
-.btn.outline{
-  background:transparent;
-  color:#fff;
+
+a:hover {
+  opacity: 0.7;
 }
-.btn:hover{transform:translateY(-2px)}
+
+/* BUTTON */
+button {
+  padding: 12px 25px;
+  background: #fff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+/* INPUT FIELDS (KALI STYLE MINIMAL) */
+input, textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+  padding: 10px 5px;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #777;
+}
+
+/* SECTIONS */
+section {
+  width: 100%;
+}
+
+/* SPACING SYSTEM */
+.section {
+  padding: 120px 20px;
+}
+
+/* VIDEO + IMAGE */
+video, img {
+  width: 100%;
+  display: block;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 30px;
+}
+
+/* ANIMATIONS */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+
+/* HERO TEXT */
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+.hero-subtitle {
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+/* WORK CARDS */
+.card {
+  height: 250px;
+  background: #111;
+  border: 1px solid #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* CONTACT SECTION */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .section {
+    padding: 80px 20px;
+  }
+}
