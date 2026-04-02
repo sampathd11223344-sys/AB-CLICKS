@@ -1,98 +1,115 @@
-import React, { useState } from "react";
+import React from "react";
+
+const videos = [
+  {
+    title: "Haldi Ceremony",
+    url: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+    thumbnail: "https://img.youtube.com/vi/ysz5S6PUM-U/maxresdefault.jpg",
+  },
+  {
+    title: "Wedding Highlights",
+    url: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+    thumbnail: "https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg",
+  },
+  {
+    title: "Pre Wedding Shoot",
+    url: "https://www.youtube.com/watch?v=ScMzIvxBSi4",
+    thumbnail: "https://img.youtube.com/vi/ScMzIvxBSi4/maxresdefault.jpg",
+  },
+];
 
 export default function Home() {
-
-  const [form, setForm] = useState({
-    name: "",
-    event: "",
-    date: ""
-  });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const text = `Hello AB Clicks, I want to book a ${form.event} shoot on ${form.date}. My name is ${form.name}`;
-    const url = `https://wa.me/918919852330?text=${encodeURIComponent(text)}`;
-
-    window.open(url, "_blank");
-  };
-
   return (
-    <div style={{ background: "#000", color: "#fff" }}>
+    <div className="bg-black text-white">
 
       {/* HERO */}
-      <section id="home" style={{ height: "100vh", position: "relative" }}>
-        <video autoPlay muted loop style={{ width: "100%", height: "100%", objectFit: "cover" }}>
-          <source src="/Videos/VID_20260402_112748_502.mp4" />
-        </video>
+      <section className="h-screen flex flex-col justify-center items-center text-center px-4">
+        <h1 className="text-5xl md:text-7xl font-bold">
+          AB Clicks
+        </h1>
 
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center"
-        }}>
-          <h1 style={{ fontSize: "60px" }}>Capture Moments</h1>
-          <p>Create Memories</p>
-        </div>
-      </section>
-
-      {/* JOURNEY */}
-      <section id="journey" style={{ padding: "120px 20px", textAlign: "center" }}>
-        <h1>Our Journey</h1>
-        <p style={{ maxWidth: "600px", margin: "20px auto" }}>
-          We create cinematic wedding stories through photography and videography.
+        <p className="mt-4 text-gray-400 max-w-xl">
+          Cinematic Photography & Videography for Weddings, Haldi,
+          Pre-Wedding & Special Moments.
         </p>
+
+        <a
+          href="https://wa.me/91891985233"
+          target="_blank"
+          className="mt-6 bg-white text-black px-6 py-3 rounded-xl"
+        >
+          Book Now
+        </a>
       </section>
 
-      {/* WORK */}
-      <section id="work" style={{ padding: "120px 20px" }}>
-        <h1 style={{ textAlign: "center", marginBottom: "50px" }}>Our Work</h1>
+      {/* CATEGORIES */}
+      <section className="py-16 px-6 text-center">
+        <h2 className="text-3xl font-semibold mb-10">Our Specialties</h2>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "30px"
-        }}>
-          {[...Array(10)].map((_, i) => (
-            <div key={i} style={{
-              height: "250px",
-              background: "#111",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center"
-            }}>
-              Video Placeholder
+        <div className="grid md:grid-cols-4 gap-6">
+          {["Wedding", "Haldi", "Pre-Wedding", "Birthdays"].map((item, i) => (
+            <div
+              key={i}
+              className="border border-gray-700 p-6 rounded-xl hover:bg-white hover:text-black transition"
+            >
+              {item}
             </div>
           ))}
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" style={{
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}>
-        <form onSubmit={handleSubmit} style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px"
-        }}>
-          <input name="name" placeholder="Name" onChange={handleChange} required />
-          <input name="event" placeholder="Event" onChange={handleChange} required />
-          <input type="date" name="date" onChange={handleChange} required />
+      {/* VIDEO PORTFOLIO */}
+      <section className="py-16 px-6">
+        <h2 className="text-3xl text-center font-semibold mb-10">
+          Our Work
+        </h2>
 
-          <button type="submit">Book Now</button>
-        </form>
+        <div className="grid md:grid-cols-3 gap-8">
+          {videos.map((video, i) => (
+            <a
+              key={i}
+              href={video.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative"
+            >
+              <img
+                src={video.thumbnail}
+                alt={video.title}
+                className="rounded-xl w-full h-64 object-cover group-hover:scale-105 transition"
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                <div className="bg-white text-black px-4 py-2 rounded-full">
+                  ▶ Play
+                </div>
+              </div>
+
+              {/* Title */}
+              <h3 className="mt-4 text-lg">{video.title}</h3>
+            </a>
+          ))}
+        </div>
       </section>
+
+      {/* CONTACT */}
+      <section className="py-16 text-center">
+        <h2 className="text-3xl font-semibold mb-6">Book Your Shoot</h2>
+
+        <a
+          href="https://wa.me/91891985233"
+          target="_blank"
+          className="bg-green-500 px-8 py-3 rounded-xl text-black font-semibold"
+        >
+          Chat on WhatsApp
+        </a>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="text-center py-6 text-gray-500 text-sm">
+        © 2026 AB Clicks
+      </footer>
 
     </div>
   );
