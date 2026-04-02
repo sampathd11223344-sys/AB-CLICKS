@@ -1,3 +1,4 @@
+import React from "react";
 export default function Work() {
   return (
     <div style={{ background: "#000", color: "#fff", padding: "120px 20px" }}>
