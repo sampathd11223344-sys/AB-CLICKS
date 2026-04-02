@@ -20,7 +20,7 @@ export default function App() {
 
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black"></div>
 
-        <h1 className="text-5xl md:text-7xl font-bold z-10 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-wide z-10 leading-tight">
           Capture Moments  
           <br /> Create Memories
         </h1>
@@ -33,7 +33,7 @@ export default function App() {
           href="https://wa.me/918919852330?text=Hello%20AB%20Clicks%20I%20want%20to%20book%20a%20shoot"
           target="_blank"
           rel="noreferrer"
-          className="mt-6 z-10 bg-white text-black px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
+          className="mt-6 z-10 bg-white text-black px-8 py-3 rounded-full font-semibold hover:scale-110 transition shadow-[0_0_20px_rgba(255,255,255,0.5)]"
         >
           Book Now
         </a>
