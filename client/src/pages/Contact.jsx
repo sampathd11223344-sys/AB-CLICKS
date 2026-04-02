@@ -1,3 +1,4 @@
+import React from "react";
 export default function Contact() {
   return (
     <div style={{ background: "#000", color: "#fff", padding: "100px", textAlign: "center" }}>
